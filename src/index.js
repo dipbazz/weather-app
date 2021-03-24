@@ -1,4 +1,4 @@
-import './scss/style.scss';
+import './style.css';
 
 const API = {
   ENDPOINT: 'https://api.openweathermap.org/data/2.5/weather',
@@ -6,7 +6,7 @@ const API = {
   KEY: 'b45c41f3e642f4072bee82112f733a7e',
 };
 
-const form = document.getElementById('weaterh-form');
+const form = document.getElementById('weather-form');
 
 const processWeatherData = data => {
   const obj = {};
