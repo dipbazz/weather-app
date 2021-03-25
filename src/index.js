@@ -7,6 +7,7 @@ const API = {
 };
 
 const form = document.getElementById('weather-form');
+const img_path = "./images/";
 
 const processWeatherData = data => {
   const obj = {};
@@ -28,9 +29,9 @@ const processWeatherData = data => {
   obj.weather = data.weather[0];
   obj.image = {
     "sm": `${API.IMG_ENDPOINT}${data.weather[0].icon}.png`,
-    "2x": `${API.IMG_ENDPOINT}${data.weather[0].icon}@2x.png`
+    "2x": `${API.IMG_ENDPOINT}${data.weather[0].icon}@2x.png`,
+    "bg": `${img_path}${data.weather[0].main.toLocaleLowerCase()}.jpg`
   }
-
 
   return obj
 };
@@ -38,7 +39,6 @@ const processWeatherData = data => {
 const getWeatherOf = async (city, units='metric') => {
   const response = await fetch(`${API.ENDPOINT}/?q=${city}&units=${units}&appid=${API.KEY}`);
   const data = await response.json();
-  console.log(data);
   return processWeatherData(data);
 };
 
@@ -48,7 +48,7 @@ const generateWeather = city => {
   });
 }
 
-// generateWeather('Kathmandu');
+generateWeather('Kathmandu');
 
 form.addEventListener('submit', e => {
   e.preventDefault();

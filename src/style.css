@@ -1,6 +1,18 @@
+/* stylelint-disable */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* stylelint-enable */
+
+body {
+  background-image: url("images/drizzle.jpg");
+}
+
+#main-weather {
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
+  height: 500px;
+}
 
 .weather-icon {
   filter: drop-shadow(0 5px 8px rgba(0, 0, 0, 0.4));

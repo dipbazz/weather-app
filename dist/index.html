@@ -9,18 +9,18 @@
 
   <title>Weather app</title>
 </head>
-<body>
+<body class="h-screen overflow-hidden bg-center bg-no-repeat bg-cover">
 
   <div class="flex justify-center my-8">
     <form action="#" id="weather-form">
       <div class="relative">
-        <span class="iconify text-gray-500 absolute left-1" data-icon="akar-icons:search" data-inline="false"></span>
-        <input type="text" name="city" class="px-6 border-b-2 border-gray-500 border-solid outline-none text-center text-gray-500 bg-transparent" placeholder="Weather in your city">
+        <span class="iconify text-white absolute left-1" data-icon="akar-icons:search" data-inline="false"></span>
+        <input type="text" name="city" class="px-6 border-b-2 border-gray-700 border-solid outline-none text-center text-white bg-transparent font-bold text-2xl" placeholder="Weather in your city">
       </div>
     </form>
   </div>
 
-  <div class="flex justify-center items-center" id="main-weather">
+  <div class="flex justify-center items-center max-w-4xl rounded-2xl m-auto" id="main-weather">
 
   </div>
 
