@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:dev": "webpack --mode development",
+    "build:dev:css": "tailwindcss build ./src/style.css -o ./dist/style.css",
+    "build:dev:js": "webpack --mode development",
+    "build:dev": "npm run build:dev:css && npm run build:dev:js",
     "build": "webpack --mode production",
     "start": "webpack serve --mode development"
   },

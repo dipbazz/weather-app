@@ -4,19 +4,73 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- <link rel="stylesheet" href="/style.css"> -->
+  <link rel="stylesheet" href="style.css">
+  <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+
   <title>Weather app</title>
 </head>
 <body>
-  <h1>Weather information</h1>
 
-  <form action="#" id="weather-form">
-    <input type="text" name="city">
-    <input type="submit" value="submit">
-  </form>
+  <div class="flex justify-center my-8">
+    <form action="#" id="weather-form">
+      <div class="relative">
+        <span class="iconify text-gray-500 absolute left-1" data-icon="akar-icons:search" data-inline="false"></span>
+        <input type="text" name="city" class="px-6 border-b-2 border-gray-500 border-solid outline-none text-center text-gray-500 bg-transparent" placeholder="Weather in your city">
+      </div>
+      <!-- <input type="submit" value="submit"> -->
+    </form>
+  </div>
 
-  <div class="content">
+  <div class="flex justify-center items-center" id="main-weather">
+    <div class="text-center">
+      <h1 class="text-5xl capitalize font-light text-gray-600">city name</h1>
+      <h4 class="capitalize mt-2 text-gray-500">
+        <span class="">thu, </span>
+        <span class="">25 mar 2021</span>
+      </h4>
 
+      <div class="flex justify-center items-center">
+        <div>
+          <div class="font-medium text-gray-600">
+            <p class="relative inline-block">
+              <span class="text-8xl">21</span>
+              <span class="text-3xl absolute -right-2 top-0">o</span>
+            </p>
+            <span class="inline-block text-8xl ml-1">C</span>
+          </div>
+          <span class="font-light text-xl text-gray-400 block">Cloudy rainy</span>
+          <span class="font-light text-gray-400">
+            Feels like:
+            <p class="font-extrabold inline-block">
+              <div class="relative inline-block">
+                <span class="">21</span>
+                <span class=" absolute text-xs -right-2 top-0">o</span>
+              </div>
+              <span class="inline-block  ml-1">C</span>
+            </p>
+          </span>
+        </div>
+        <div>
+          <img class="h-60 weather-icon" src="https://openweathermap.org/img/wn/02n@2x.png" alt="image will be here">
+        </div>
+        <div class="text-left">
+          <div class="text-gray-600">
+            <p class="mb-3">
+              <span class="iconify inline-block text-2xl mr-2" data-icon="carbon:humidity" data-inline="false"></span>
+              40% humidity
+            </p>
+            <p class="mb-3">
+              <span class="iconify inline-block text-2xl mr-2" data-icon="bi:thermometer-half" data-inline="false"></span>
+              734 mm Hg
+            </p>
+            <p class="mb-3">
+              <span class="iconify inline-block text-2xl mr-2" data-icon="bi:wind" data-inline="false"></span>
+              1.2 mph NW
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script src="/main.js"></script>

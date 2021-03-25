@@ -1,5 +1,3 @@
-import './style.css';
-
 const API = {
   ENDPOINT: 'https://api.openweathermap.org/data/2.5/weather',
   IMG_ENDPOINT: 'https://openweathermap.org/img/wn/',
@@ -11,13 +9,13 @@ const form = document.getElementById('weather-form');
 const processWeatherData = data => {
   const obj = {};
   obj.name = data.name;
-  obj.temp = data.main.temp;
-  obj.temp_max = data.main.temp_max;
-  obj.temp_min = data.main.temp_min;
-  obj.pressure = data.main.pressure;
-  obj.humidity = data.main.humidity;
-  obj.weather = data.weather[0].main;
-  obj.image_url = `${API.IMG_ENDPOINT}${data.weather[0].icon}.png`
+  obj.main = data.main;
+  obj.wind = data.wind;
+  obj.weather = data.weather[0];
+  obj.image = {
+    "sm": `${API.IMG_ENDPOINT}${data.weather[0].icon}.png`,
+    "2x": `${API.IMG_ENDPOINT}${data.weather[0].icon}@2x.png`
+  }
 
 
   return obj
