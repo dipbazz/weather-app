@@ -7,28 +7,61 @@ const API = {
 };
 
 const form = document.getElementById('weather-form');
-const temperatureToogle = document.getElementById('temperature');
+const temperatureToogleBtn = document.getElementById('temperature');
 const IMG_PATH = './images/';
 const TEMPERATURE_TOOGLE_KEY = 'weather.toogle_state';
+const WEATHER_DATA_KEY = 'weather.weather';
 
-const getToogleState = () => {
-  const storage = JSON.parse(localStorage.getItem(TEMPERATURE_TOOGLE_KEY));
-  if (storage) return storage.state;
+const temperatureToogle = (() => {
+  const getState = () => {
+    const storage = JSON.parse(localStorage.getItem(TEMPERATURE_TOOGLE_KEY));
+    if (storage) return storage.state;
 
-  return false;
-};
+    return false;
+  }
 
-temperatureToogle.checked = getToogleState();
+  const setState = event => {
+    localStorage.setItem(TEMPERATURE_TOOGLE_KEY, JSON.stringify({ state: event.target.checked }))
+  }
+
+  const tempUnit = () => {
+    if(getState()) return 'F'
+
+    return 'C'
+  }
+
+  const fahrenheitToCelsius = (value) => (Math.round(((value - 32) * 5/9) * 100) / 100)
+
+  const celsiusToFahrenheit = (value) => (Math.round(((value * 9/5) + 32) * 100) / 100)
+
+  return { getState, setState, tempUnit, fahrenheitToCelsius,  celsiusToFahrenheit}
+})();
+
+temperatureToogleBtn.checked = temperatureToogle.getState();
+
+const weatherData = (() => {
+  const set = data => {
+    localStorage.setItem(WEATHER_DATA_KEY, JSON.stringify(data))
+  }
+
+  const get = () => {
+    return JSON.parse(localStorage.getItem(WEATHER_DATA_KEY))
+  }
+
+  return {set, get};
+
+})();
+
 
 const processWeatherData = data => {
   const obj = {};
   obj.city = data.name;
   obj.country = data.sys.country;
   obj.temperature = {
-    value: Math.floor(data.main.temp),
-    unit: getToogleState() ? 'F' : 'C',
+    value: Math.round(data.main.temp * 100) / 100,
+    unit: temperatureToogle.tempUnit(),
   };
-  obj.feels_like = Math.floor(data.main.feels_like);
+  obj.feels_like = Math.round(data.main.feels_like * 100) / 100;
   obj.humidity = {
     value: data.main.humidity,
   };
@@ -44,11 +77,13 @@ const processWeatherData = data => {
     bg: `${IMG_PATH}${data.weather[0].main.toLocaleLowerCase()}.jpg`,
   };
 
+  weatherData.set(obj);
+
   return obj;
 };
 
 const getTemperatureUnit = () => {
-  if (getToogleState()) return 'Imperial';
+  if (temperatureToogle.getState()) return 'Imperial';
 
   return 'Metric';
 };
@@ -67,7 +102,7 @@ const getWeatherOf = async (city, units = getTemperatureUnit()) => {
   }
 };
 
-// getWeatherOf('Kathmandu');
+getWeatherOf('Kathmandu');
 
 form.addEventListener('submit', e => {
   e.preventDefault();
@@ -77,6 +112,15 @@ form.addEventListener('submit', e => {
   form.reset();
 });
 
-temperatureToogle.addEventListener('change', e => {
-  localStorage.setItem(TEMPERATURE_TOOGLE_KEY, JSON.stringify({ state: e.target.checked }));
+temperatureToogleBtn.addEventListener('change', e => {
+  temperatureToogle.setState(e);
+  const data = weatherData.get();
+  data.temperature.unit = temperatureToogle.tempUnit();
+  if(temperatureToogle.getState()) {
+    data.temperature.value = temperatureToogle.celsiusToFahrenheit(data.temperature.value)
+  }else {
+    data.temperature.value = temperatureToogle.fahrenheitToCelsius(data.temperature.value)
+  }
+  weatherData.set(data);
+  new WeatherView('main-weather').render(data);
 });
