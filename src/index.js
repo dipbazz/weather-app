@@ -1,9 +1,11 @@
 import WeatherView from './view/weather';
 
+console.log(process.env);
+
 const API = {
   ENDPOINT: 'https://api.openweathermap.org/data/2.5/weather',
   IMG_ENDPOINT: 'https://openweathermap.org/img/wn/',
-  KEY: 'b45c41f3e642f4072bee82112f733a7e',
+  KEY: process.env.API_KEY,
 };
 
 const form = document.getElementById('weather-form');
@@ -18,40 +20,38 @@ const temperatureToogle = (() => {
     if (storage) return storage.state;
 
     return false;
-  }
+  };
 
   const setState = event => {
-    localStorage.setItem(TEMPERATURE_TOOGLE_KEY, JSON.stringify({ state: event.target.checked }))
-  }
+    localStorage.setItem(TEMPERATURE_TOOGLE_KEY, JSON.stringify({ state: event.target.checked }));
+  };
 
   const tempUnit = () => {
-    if(getState()) return 'F'
+    if (getState()) return 'F';
 
-    return 'C'
-  }
+    return 'C';
+  };
 
-  const fahrenheitToCelsius = (value) => (Math.round(((value - 32) * 5/9) * 100) / 100)
+  const fahrenheitToCelsius = (value) => (Math.round(((value - 32) * (5 / 9)) * 100) / 100);
 
-  const celsiusToFahrenheit = (value) => (Math.round(((value * 9/5) + 32) * 100) / 100)
+  const celsiusToFahrenheit = (value) => (Math.round(((value * (9 / 5)) + 32) * 100) / 100);
 
-  return { getState, setState, tempUnit, fahrenheitToCelsius,  celsiusToFahrenheit}
+  return {
+    getState, setState, tempUnit, fahrenheitToCelsius, celsiusToFahrenheit,
+  };
 })();
 
 temperatureToogleBtn.checked = temperatureToogle.getState();
 
 const weatherData = (() => {
   const set = data => {
-    localStorage.setItem(WEATHER_DATA_KEY, JSON.stringify(data))
-  }
+    localStorage.setItem(WEATHER_DATA_KEY, JSON.stringify(data));
+  };
 
-  const get = () => {
-    return JSON.parse(localStorage.getItem(WEATHER_DATA_KEY))
-  }
+  const get = () => JSON.parse(localStorage.getItem(WEATHER_DATA_KEY));
 
-  return {set, get};
-
+  return { set, get };
 })();
-
 
 const processWeatherData = data => {
   const obj = {};
@@ -70,7 +70,7 @@ const processWeatherData = data => {
     unit: 'hPa',
   };
   obj.wind = data.wind;
-  obj.weather = data.weather[0];
+  [obj.weather] = data.weather;
   obj.image = {
     sm: `${API.IMG_ENDPOINT}${data.weather[0].icon}.png`,
     '2x': `${API.IMG_ENDPOINT}${data.weather[0].icon}@2x.png`,
@@ -116,10 +116,10 @@ temperatureToogleBtn.addEventListener('change', e => {
   temperatureToogle.setState(e);
   const data = weatherData.get();
   data.temperature.unit = temperatureToogle.tempUnit();
-  if(temperatureToogle.getState()) {
-    data.temperature.value = temperatureToogle.celsiusToFahrenheit(data.temperature.value)
-  }else {
-    data.temperature.value = temperatureToogle.fahrenheitToCelsius(data.temperature.value)
+  if (temperatureToogle.getState()) {
+    data.temperature.value = temperatureToogle.celsiusToFahrenheit(data.temperature.value);
+  } else {
+    data.temperature.value = temperatureToogle.fahrenheitToCelsius(data.temperature.value);
   }
   weatherData.set(data);
   new WeatherView('main-weather').render(data);
