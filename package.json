@@ -8,7 +8,9 @@
     "build:dev:css": "tailwindcss build ./src/style.css -o ./dist/style.css",
     "build:dev:js": "webpack --mode development",
     "build:dev": "npm run build:dev:css && npm run build:dev:js",
-    "build": "webpack --mode production",
+    "build:prod:css": "NODE_ENV=production tailwindcss build ./src/style.css -o ./dist/style.css",
+    "build:prod:js": "webpack --mode production",
+    "build": "npm run build:prod:css && npm run build:prod:js",
     "start": "webpack serve --mode development"
   },
   "repository": {
