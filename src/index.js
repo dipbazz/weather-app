@@ -1,11 +1,9 @@
 import WeatherView from './view/weather';
 
-console.log(process.env);
-
 const API = {
   ENDPOINT: 'https://api.openweathermap.org/data/2.5/weather',
   IMG_ENDPOINT: 'https://openweathermap.org/img/wn/',
-  KEY: process.env.API_KEY,
+  KEY: 'b45c41f3e642f4072bee82112f733a7e',
 };
 
 const form = document.getElementById('weather-form');
