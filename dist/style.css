@@ -1,4 +1,6 @@
-/*! tailwindcss v2.0.4 | MIT License | https://tailwindcss.com */
+/* stylelint-disable */
+
+/* ! tailwindcss v2.0.4 | MIT License | https://tailwindcss.com */
 
 /*! modern-normalize v1.0.0 | MIT License | https://github.com/sindresorhus/modern-normalize */
 
@@ -113,7 +115,7 @@ strong {
 code,
 kbd,
 samp,
-pre{
+pre {
   font-family:
 		ui-monospace,
 		SFMono-Regular,
@@ -31175,19 +31177,49 @@ video {
           animation: bounce 1s infinite;
 }
 
+/* stylelint-enable */
+
 body {
   background-image: url("images/drizzle.jpg");
 }
 
 #main-weather {
-  background-color: rgba(255, 255, 255, .15);
-  -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.15);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
   height: 500px;
 }
 
 .weather-icon {
   filter: drop-shadow(0 5px 8px rgba(0, 0, 0, 0.4));
+}
+
+.toogle-label {
+  transition: all linear 0.4s;
+}
+
+.toogle-label::after {
+  position: absolute;
+  display: flex;
+  width: 55%;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgb(0 0 0 / 20%);
+  content: '℃';
+  top: -1px;
+  left: -1px;
+  bottom: -1px;
+  right: 50%;
+  border-radius: 999px;
+  background-color: red;
+}
+
+.toogle-input:checked + .toogle-label::after {
+  content: '℉';
+  left: 50%;
+  right: -1px;
 }
 
 @media (min-width: 640px) {
