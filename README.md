@@ -1,9 +1,6 @@
-# weather-app
-A weather app to display the weather information using API data with JavaScript. Users can search for the city and get the weather information and also users can change the temperature between Celsius and Fahrenheit.
-
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Restaurant page
+# Weather app
 
 ## Table of contents
 
@@ -32,14 +29,14 @@ A weather app to display the weather information using [openweather API](https:/
 The features of this project are:
 
 - Users can search for the city and get the weather information
-- users can toogle the temperature between Celsius and Fahrenheit.
-- Users toogle state will be saved in localstorage for future reference of temperature state.
+- users can toggle the temperature between Celsius and Fahrenheit.
+- Users toggle state, will be saved in local storage for future reference of temperature state.
 
 ## Live Demo
 
 This project is hosted on netlify.
 
-[Live demo link](https://hungry-kitchen.netlify.com/)
+[Live demo link](https://find-the-weather.netlify.app/)
 ## Built With
 
 - HTML
@@ -52,11 +49,11 @@ This project is hosted on netlify.
 
 Follow along the steps below to get a copy at your local machine.
 
-- Navigate to the directory where you want this project to clone and then clone it `git clone https://github.com/dipbazz/restaurant_page.git`
-- Navigate to the `restaurant_page` directory
+- Navigate to the directory where you want this project to clone and then clone it `git clone https://github.com/dipbazz/weather-app.git`
+- Navigate to the `weather-app` directory
 - Install the npm package with `npm install`
 - Start the server with `npm run start`
-- The site should automatically open in your browser at http://localhost:8080/ if it didn't then open your browser with that link.
+- The site should automatically open on your browser at http://localhost:8080/ if it didn't, then open your browser with that link.
 
 ## Authors
 
@@ -76,11 +73,9 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-- color palate used for this project is from [flatuicolors](https://flatuicolors.com/palette/ca)
-
-- <span>Background image by <a href="https://unsplash.com/@grimnoire">emy</a> on <a href="https://unsplash.com/s/photos/food">Unsplash</a></span>
-
-- images used in menu's list [Burger](https://www.freepngimg.com/png/10726-burger-png-image), [Salad](https://www.freepngimg.com/png/16870-salad-png-picture), [pizza](https://www.freepngimg.com/png/6490-pizza-png-image), [Hot Dog](https://www.freepngimg.com/png/12983-hot-dog-png-clipart)
+- Background images for weather is from [unsplash](https://unsplash.com/)
+- Icons used from [iconify.design](https://iconify.design/)
+- weather api is used from [openweather](https://openweathermap.org/api)
 
 ## 📝 License
 

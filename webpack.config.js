@@ -18,6 +18,7 @@ module.exports = {
   },
   devServer: {
     compress: true,
+    open: true,
     host: 'localhost',
     watchContentBase: true,
     contentBase: path.resolve(__dirname, 'dist'),

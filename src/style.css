@@ -18,11 +18,11 @@ body {
   filter: drop-shadow(0 5px 8px rgba(0, 0, 0, 0.4));
 }
 
-.toogle-label {
+.toggle-label {
   transition: all linear 0.4s;
 }
 
-.toogle-label::after {
+.toggle-label::after {
   position: absolute;
   display: flex;
   width: 55%;
@@ -40,7 +40,7 @@ body {
   background-color: red;
 }
 
-.toogle-input:checked + .toogle-label::after {
+.toggle-input:checked + .toggle-label::after {
   content: '℉';
   left: 50%;
   right: -1px;

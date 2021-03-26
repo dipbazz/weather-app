@@ -9,7 +9,7 @@ const API = {
 const form = document.getElementById('weather-form');
 const temperatureToogleBtn = document.getElementById('temperature');
 const IMG_PATH = './images/';
-const TEMPERATURE_TOOGLE_KEY = 'weather.toogle_state';
+const TEMPERATURE_TOOGLE_KEY = 'weather.toggle_state';
 const WEATHER_DATA_KEY = 'weather.weather';
 
 const temperatureToogle = (() => {
