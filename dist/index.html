@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+
+  <title>Weather app</title>
+</head>
+<body class="h-screen overflow-hidden bg-center bg-no-repeat bg-cover text-white">
+
+  <div class="fixed top-2 right-8">
+    <input type="checkbox" class="appearance-none toggle-input" id="temperature">
+    <label for="temperature" class="w-20 h-10 relative cursor-pointer block outline-none toggle-label rounded-full p-1 bg-gray-500"></label>
+  </div>
+
+
+  <div class="flex justify-center my-8">
+    <form action="#" id="weather-form">
+      <div class="relative">
+        <span class="iconify absolute left-1" data-icon="akar-icons:search" data-inline="false"></span>
+        <input type="text" name="city" class="px-6 border-b-2 border-gray-700 border-solid outline-none text-center bg-transparent font-bold text-2xl" placeholder="Weather in your city">
+      </div>
+    </form>
+  </div>
+
+  <div class="flex justify-center items-center max-w-4xl rounded-2xl m-auto" id="main-weather">
+
+  </div>
+
+  <script src="/main.js"></script>
+</body>
+</html>
