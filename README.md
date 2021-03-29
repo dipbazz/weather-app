@@ -76,6 +76,8 @@ Give a ⭐️ if you like this project!
 - Background images for weather is from [unsplash](https://unsplash.com/)
 - Icons used from [iconify.design](https://iconify.design/)
 - weather api is used from [openweather](https://openweathermap.org/api)
+- this [article](https://www.campbellsci.com/blog/convert-wind-directions) was a really helpful to calculate the wind direction from deg to string value.
+- thanks to [Rem Tsoy](https://dribbble.com/remtsoy) for the wonderful [weather app design](https://dribbble.com/shots/1663525-Weather-Widget-freebie-HTML-CSS)
 
 ## 📝 License
 

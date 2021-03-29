@@ -116,8 +116,10 @@ temperatureToogleBtn.addEventListener('change', e => {
   data.temperature.unit = temperatureToogle.tempUnit();
   if (temperatureToogle.getState()) {
     data.temperature.value = temperatureToogle.celsiusToFahrenheit(data.temperature.value);
+    data.feels_like = temperatureToogle.celsiusToFahrenheit(data.feels_like);
   } else {
     data.temperature.value = temperatureToogle.fahrenheitToCelsius(data.temperature.value);
+    data.feels_like = temperatureToogle.fahrenheitToCelsius(data.feels_like);
   }
   weatherData.set(data);
   new WeatherView('main-weather').render(data);

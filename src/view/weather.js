@@ -1,7 +1,6 @@
 import moment from 'moment';
 
 const getWindDirection = deg => {
-  // https://www.campbellsci.com/blog/convert-wind-directions
   const windDirection = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW', 'N'];
   return windDirection[Math.round(deg / 22.5, 0)];
 };
